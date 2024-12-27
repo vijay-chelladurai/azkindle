@@ -1,0 +1,63 @@
+<div class="w-100 d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <form class="border p-3 col-md-4" style="border:1px solid #929292 !important">
+        <div class="row g-0">
+            <div class="col text-center p-2 mb-3 bg-light">
+                <span class="fs-3">Register</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col mb-3">
+                <label for="fullName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="fullName">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="emailAddress" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="emailAddress">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-control" name="role" id="role">
+                    <option value="admin">Admin</option>
+                    <option selected value="user">User</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="comments" class="form-label">Comments</label>
+                <input type="text" class="form-control" id="comments">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="d-grid">
+                    <button type="button" onclick="window.location.href = '/admin/user-orders.html'" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up Link -->
+        <div class="row mt-3">
+            <div class="col text-center">
+                <a href="login.html" class="text-decoration-none">Already have an account? <strong>Login</strong></a>
+            </div>
+        </div>
+    </form>
+
+</div>
