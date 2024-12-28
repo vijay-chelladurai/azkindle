@@ -1,63 +1,101 @@
 <div class="w-100 d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-    <form class="border p-3 col-md-4" style="border:1px solid #929292 !important">
+    <form [formGroup]="registerForm" class="border p-4 col-md-4 rounded-3 shadow-lg bg-light">
         <div class="row g-0">
-            <div class="col text-center p-2 mb-3 bg-light">
+            <div class="col text-center p-2 mb-4 bg-primary text-white rounded-3">
                 <span class="fs-3">Register</span>
             </div>
         </div>
 
+        <!-- Full Name -->
         <div class="row">
             <div class="col mb-3">
                 <label for="fullName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="fullName">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <label for="emailAddress" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="emailAddress">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <label for="confirmPassword" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <label for="role" class="form-label">Role</label>
-                <select class="form-control" name="role" id="role">
-                    <option value="admin">Admin</option>
-                    <option selected value="user">User</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <label for="comments" class="form-label">Comments</label>
-                <input type="text" class="form-control" id="comments">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 offset-3">
-                <div class="d-grid">
-                    <button type="button" onclick="window.location.href = '/admin/user-orders.html'" class="btn btn-primary">Submit</button>
+                <input type="text" class="form-control" id="fullName" formControlName="fullName"
+                    placeholder="Enter your full name" [class.is-invalid]="f.fullName.invalid && f.fullName.touched">
+                <div *ngIf="f.fullName.invalid && f.fullName.touched" class="invalid-feedback">
+                    <small *ngIf="f.fullName.errors?.['required']">Name is required.</small>
+                    <small *ngIf="f.fullName.errors?.['minlength']">Name must be at least 3 characters long.</small>
+                    <small *ngIf="f.fullName.errors?.['maxlength']">Name cannot exceed 20 characters.</small>
                 </div>
             </div>
         </div>
-        <!-- Sign Up Link -->
-        <div class="row mt-3">
-            <div class="col text-center">
-                <a href="login.html" class="text-decoration-none">Already have an account? <strong>Login</strong></a>
+
+        <!-- Email Address -->
+        <div class="row">
+            <div class="col mb-3">
+                <label for="emailAddress" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="emailAddress" formControlName="emailAddress"
+                    placeholder="Enter your email"
+                    [class.is-invalid]="f.emailAddress.invalid && f.emailAddress.touched">
+                <div *ngIf="f.emailAddress.invalid && f.emailAddress.touched" class="invalid-feedback">
+                    <small *ngIf="f.emailAddress.errors?.['required']">Email is required.</small>
+                    <small *ngIf="f.emailAddress.errors?.['email']">Please enter a valid email address.</small>
+                </div>
             </div>
         </div>
-    </form>
 
+        <!-- Password -->
+        <div class="row">
+            <div class="col mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password"
+                    placeholder="Enter your password" [class.is-invalid]="f.password.invalid && f.password.touched">
+                <div *ngIf="f.password.invalid && f.password.touched" class="invalid-feedback">
+                    <small *ngIf="f.password.errors?.['required']">Password is required.</small>
+                    <small *ngIf="f.password.errors?.['minlength']">Password must be at least 5 characters long.</small>
+                    <small *ngIf="f.password.errors?.['maxlength']">Password cannot exceed 15 characters.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="row">
+            <div class="col mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+                    placeholder="Confirm your password"
+                    [class.is-invalid]="f.confirmPassword.invalid && f.confirmPassword.touched">
+                <div *ngIf="f.confirmPassword.invalid && f.confirmPassword.touched" class="invalid-feedback">
+                    <small *ngIf="f.confirmPassword.errors?.['required']">Confirmation is required.</small>
+                    <small *ngIf="f.confirmPassword.errors?.['minlength']">Confirmation must be at least 5 characters
+                        long.</small>
+                        <small *ngIf="f.confirmPassword.errors?.['maxlength']">Confirmation cannot exceed 15 characters.</small>
+                        <small *ngIf="f.confirmPassword.errors?.['passwordMismatch']">Passwords do not match.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role -->
+        <div class="row">
+            <div class="col mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-control" id="role" formControlName="role"
+                    [class.is-invalid]="f.role.invalid && f.role.touched">
+                    <option value="">Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <div *ngIf="f.role.invalid && f.role.touched" class="invalid-feedback">
+                    <small>Role is required.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="d-grid">
+                    <button type="button" [disabled]="registerForm.invalid" (click)="register()" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 text-center">
+            <div class="col">
+              <p class="mb-0">
+                Already have an account?
+                <a href="" routerLink="/auth/login" class="text-primary">Login</a>
+              </p>
+            </div>
+          </div>
+    </form>
 </div>

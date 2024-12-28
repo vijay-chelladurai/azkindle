@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PagenotfoundComponent } from '../../shared/pagenotfound/pagenotfound.component';
 import { MyordersComponent } from './myorders/myorders.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserGuard } from '../guards/user.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,9 @@ const routes: Routes = [
   },
   {
     path:'dashboard',
-    component:UserDashboardComponent
+    canActivate:[UserGuard],
+    component:UserDashboardComponent,
+
   },
   {
     path:'**',

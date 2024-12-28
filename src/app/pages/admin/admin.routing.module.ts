@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { PagenotfoundComponent } from '../../shared/pagenotfound/pagenotfound.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { BookListComponent } from './book-list/book-list.component';
+import { AdminGuard } from '../guards/admin.guard';
 
 const routes: Routes = [
   {
     path:'dashboard',
+    canActivate:[AdminGuard],
     component:AdminDashboardComponent
   },
   {

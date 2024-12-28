@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -5,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ import {
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private api:HttpClient,private route:Router) {}
 
 
   ngOnInit() {
@@ -29,8 +31,20 @@ export class LoginComponent implements OnInit {
     // });
   }
   login(){
-    if(this.loginForm.valid){
-      console.log(this.loginForm.value)
-    }
+      if(this.loginForm.valid){
+        this.api.post("http://localhost:7161/api/auth/login",this.loginForm.value).subscribe((res:any)=>{
+          localStorage.setItem("token",JSON.stringify(res.token));
+          if(this.extractToken(res.token).role=="Admin"){
+            this.route.navigate(["/admin/dashboard"]);
+          }
+          else{
+            this.route.navigate(["/user/dashboard"]);
+          }
+        })
+      }
+  }
+
+  extractToken(token:String){
+    return JSON.parse(atob(token.split('.')[1]));
   }
 }
