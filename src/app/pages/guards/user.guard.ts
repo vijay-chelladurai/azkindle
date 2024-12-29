@@ -1,5 +1,6 @@
 import { inject, Injectable } from "@angular/core";
-import { CanActivateFn } from "@angular/router";
+import { CanActivateFn, Router } from "@angular/router";
+import { AuthService } from "../../services/auth.services";
 
 
 @Injectable({
@@ -7,20 +8,20 @@ import { CanActivateFn } from "@angular/router";
 })
 
 export class UserGuardService {
+    constructor(private router:Router,private auth:AuthService){
+
+    }
     canActivate(){
         let token = localStorage.getItem("token");
-        if(token && this.extractToken(token).role=="user"){
+        if(token && this.auth.extractToken(token).role=="user"){
             return true;
         }
         else{
+            this.router.navigate(["/unauthorized"]);
             return false;
         }
       
     }
-     extractToken(token:any){
-        return JSON.parse(atob(token.split('.')[1]));
-      }
-
 }
 
 

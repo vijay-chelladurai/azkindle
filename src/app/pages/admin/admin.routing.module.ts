@@ -4,16 +4,20 @@ import { PagenotfoundComponent } from '../../shared/pagenotfound/pagenotfound.co
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { AdminGuard } from '../guards/admin.guard';
+import { AddbookComponent } from './addbook/addbook.component';
 
 const routes: Routes = [
   {
     path:'dashboard',
-    canActivate:[AdminGuard],
     component:AdminDashboardComponent
   },
   {
     path:'books',
     component:BookListComponent
+  },
+  {
+    path:'add-books',
+    component:AddbookComponent
   },
   {
     path:'**',

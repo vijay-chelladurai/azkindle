@@ -12,7 +12,6 @@ const routes: Routes = [
   },
   {
     path:'dashboard',
-    canActivate:[UserGuard],
     component:UserDashboardComponent,
 
   },
