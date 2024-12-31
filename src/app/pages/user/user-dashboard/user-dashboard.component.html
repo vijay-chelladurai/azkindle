@@ -1,63 +1,43 @@
+<div class="container my-4">
+  <!-- Search bar with ngModel for two-way binding -->
+ <div class="mb-4">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Search books..." 
+        [(ngModel)]="searchQuery"
+        (ngModelChange)="onSearch()"
+        > 
+    </div>
 
-  <!-- Table -->
-  <div class="container">
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Book Name</th>
-            <th scope="col">Author</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Price</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>The Alchemist</td>
-            <td>Paulo Coelho</td>
-            <td>50</td>
-            <td>$12.99</td>
-            <td>
-              <button class="btn btn-primary">Order Book</button>
-            </td>
-          </tr>
-          <tr>
-            <td>To Kill a Mockingbird</td>
-            <td>Harper Lee</td>
-            <td>30</td>
-            <td>$8.99</td>
-            <td>
-              <button class="btn btn-primary">Order Book</button>
-            </td>
-          </tr>
-          <tr>
-            <td>1984</td>
-            <td>George Orwell</td>
-            <td>20</td>
-            <td>$9.99</td>
-            <td>
-              <button class="btn btn-primary">Order Book</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Pride and Prejudice</td>
-            <td>Jane Austen</td>
-            <td>40</td>
-            <td>$11.49</td>
-            <td>
-              <button class="btn btn-primary">Order Book</button>
-            </td>
-          </tr>
-          <tr>
-            <td>The Hobbit</td>
-            <td>J.R.R. Tolkien</td>
-            <td>15</td>
-            <td>$14.99</td>
-            <td>
-              <button class="btn btn-primary">Order Book</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <!-- Loop through filteredBooks array and display each as a card -->
+    <div class="col" *ngFor="let item of filteredBooks; let index = index">
+      <div class="card h-100 shadow-lg border-light rounded-3">
+        <!-- Book Image -->
+        <div class="ratio ratio-1x1">
+          <img *ngIf="item.imageBase64" style="object-fit: cover;" [src]="'data:image/jpeg;base64,' + item.imageBase64" class="card-img-top object-fit-cover rounded-top" alt="Book Image" />
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title text-center text-dark">{{ item.bookName }}</h5>
+          <p class="card-text text-muted">
+            <strong>Author:</strong> {{ item.author }} <br />
+            <strong>Price:</strong> ${{ item.price | number: '1.2-2' }} <br />
+            <span *ngIf="item.stock>0" class="badge bg-success">
+              {{ item.stock }} Available
+            </span>
+            <span *ngIf="item.stock==0" class="badge bg-danger">
+              Not Available
+            </span>
+          </p>
+          <div *ngIf="item.stock>0" class="d-flex justify-content-between align-items-center">
+            <button (click)="orderBook(item.id)" class="btn btn-primary rounded-pill w-100 d-flex align-items-center p-3 shadow-sm hover-shadow-lg">
+              <i class="bi bi-cart-plus me-2"></i> Take Book
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>

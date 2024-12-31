@@ -4,6 +4,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { MyordersComponent } from './myorders/myorders.component';
 import { UserRoutingModule } from './user.routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     UserRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class UserModule { }

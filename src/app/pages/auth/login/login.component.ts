@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
   login(){
       if(this.loginForm.valid){
         this.api.post("http://localhost:7161/api/auth/login",this.loginForm.value).subscribe((res:any)=>{
-          localStorage.setItem("token",res.token);
-          if(this.auth.extractToken(res.token).role=="admin"){
+          localStorage.setItem("token",res.content);
+          if(this.auth.extractToken(res.content).role=="admin"){
             this.route.navigate(["/admin/dashboard"]);
           }
           else{
