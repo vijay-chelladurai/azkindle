@@ -1,5 +1,11 @@
   <!-- Table -->
   <div class="container">
+
+    
+    <button class="btn btn-primary mb-4" (click)="openLg(content)">
+      Add book
+    </button>
+
     <table class="table table-striped">
         <thead>
           <tr>
@@ -11,52 +17,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>The Alchemist</td>
-            <td>Paulo Coelho</td>
-            <td>50</td>
-            <td>$12.99</td>
+          <tr *ngFor="let book of bookList; let index = index">
+            <td>{{book.bookName}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.stock}}</td>
+            <td>{{book.price}}</td>
             <td>
-              <button class="btn btn-danger">Delete Book</button>
-            </td>
-          </tr>
-          <tr>
-            <td>To Kill a Mockingbird</td>
-            <td>Harper Lee</td>
-            <td>30</td>
-            <td>$8.99</td>
-            <td>
-              <button class="btn btn-danger">Delete Book</button>
-            </td>
-          </tr>
-          <tr>
-            <td>1984</td>
-            <td>George Orwell</td>
-            <td>20</td>
-            <td>$9.99</td>
-            <td>
-              <button class="btn btn-danger">Delete Book</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Pride and Prejudice</td>
-            <td>Jane Austen</td>
-            <td>40</td>
-            <td>$11.49</td>
-            <td>
-              <button class="btn btn-danger">Delete Book</button>
-            </td>
-          </tr>
-          <tr>
-            <td>The Hobbit</td>
-            <td>J.R.R. Tolkien</td>
-            <td>15</td>
-            <td>$14.99</td>
-            <td>
-              <button class="btn btn-danger">Delete Book</button>
+              <button (click)="deleteBook(book.id)" class="btn btn-danger">Delete Book</button>
             </td>
           </tr>
         </tbody>
       </table>
       
   </div>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Add Book</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <app-addbook (formSubmitted)="closePopup()" ></app-addbook>
+    </div>
+  </ng-template>

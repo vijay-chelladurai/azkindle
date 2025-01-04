@@ -16,10 +16,6 @@ const routes: Routes = [
     component:BookListComponent
   },
   {
-    path:'add-books',
-    component:AddbookComponent
-  },
-  {
     path:'**',
     component:PagenotfoundComponent
   }
