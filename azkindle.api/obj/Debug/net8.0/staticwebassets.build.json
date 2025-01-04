@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "h6dc1ZM0ReTg0EHmyxlsitYT+CUqbXt01n4Px2OL2aA=",
+  "Source": "azkindle.api",
+  "BasePath": "_content/azkindle.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

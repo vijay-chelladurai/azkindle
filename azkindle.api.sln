@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "azkindle.api", "azkindle.api\azkindle.api.csproj", "{0DA3183E-6BBB-48BC-BB12-47CA0EACA4B7}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "azkindle.ui", "azkindle.ui\azkindle.ui.esproj", "{C941FE69-B2B0-45A3-98AC-99AC146DE2C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "azkindle.db", "azkindle.db", "{73C925AF-B5BB-4691-967B-DD21473E55A2}"
+	ProjectSection(SolutionItems) = preProject
+		azkindle.db\database.scripts.sql = azkindle.db\database.scripts.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DA3183E-6BBB-48BC-BB12-47CA0EACA4B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA3183E-6BBB-48BC-BB12-47CA0EACA4B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA3183E-6BBB-48BC-BB12-47CA0EACA4B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA3183E-6BBB-48BC-BB12-47CA0EACA4B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C941FE69-B2B0-45A3-98AC-99AC146DE2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C941FE69-B2B0-45A3-98AC-99AC146DE2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C941FE69-B2B0-45A3-98AC-99AC146DE2C1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C941FE69-B2B0-45A3-98AC-99AC146DE2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C941FE69-B2B0-45A3-98AC-99AC146DE2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C941FE69-B2B0-45A3-98AC-99AC146DE2C1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BA63751-43B7-4AB5-89E5-2AA32F627258}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,1 @@
+A:\Angular\azkindle.api\azkindle.ui\obj\Debug\azkindle.ui.esproj.CoreCompileInputs.cache
